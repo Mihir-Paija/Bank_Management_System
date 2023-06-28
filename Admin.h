@@ -1,20 +1,17 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-#include "Customer.h"
-#include "Staff.h"
-#include "Admin.h"
-
-
-int main()
-{
+void admin(){
     int opt;
     cout << endl;
-    cout << "*****Welcome to Bank Management System*****" << endl << endl;
-    cout << "Login As" << endl;
-    cout << "1 : Customer " << endl;
-    cout << "2 : Staff" << endl;
-    cout << "3 : admin" << endl;
+    cout << "*****Welcome to Admin Interface*****" << endl << endl;
+    int acc;
+    
+    
+    //check account number;
+    //print .. hello "mihir";
+    cout << "Choose One of the following services" << endl;
+    cout << "1 : Create New Account" << endl;
+    cout << "2 : Delete Account" << endl;
+    cout << "3 : Edit Account Details" << endl;
+    cout << "4 : transfer money" << endl;
     cout << "Or press \'-1\' for exit" << endl;
     do
     {
@@ -23,15 +20,19 @@ int main()
         switch (opt)
         {
         case 1:
-            customer();
+ 
             break;
 
         case 2:
-            staff();
+            
             break;
 
         case 3:
-            admin();
+            
+            break;
+
+        case 4:
+
             break;
 
         case -1:
@@ -44,7 +45,4 @@ int main()
         }
     } while (opt != -1);
 
-    cout << "***** Thanks for Visit *****" << endl;       
-
-    return 0;
 }
