@@ -1,23 +1,46 @@
+#pragma once
 #include <bits/stdc++.h>
+#include <fstream>
 using namespace std;
 
+// #include "Account_Node.cpp"
+// #include "Accounts_BST.cpp"
+
+
+// #include "Verfications.h"
+
+#include "Employee_Node.cpp"
+#include "Employee_BST.cpp"
+
+Accounts_BST Accounts_DataBase;
+Employee_BST Employees_DataBase;
+
+// #include "test.h"
 #include "Customer.h"
 #include "Staff.h"
 #include "Admin.h"
 
+void boot(){
+    Accounts_DataBase.load_accounts_server();
+}
+
 
 int main()
 {
+    // cout << "hi" << endl;
+    boot();
+
     int opt;
     cout << endl;
-    cout << "*****Welcome to Bank Management System*****" << endl << endl;
-    cout << "Login As" << endl;
-    cout << "1 : Customer " << endl;
-    cout << "2 : Staff" << endl;
-    cout << "3 : admin" << endl;
-    cout << "Or press \'-1\' for exit" << endl;
+
     do
     {
+        cout << "*****Welcome to Bank Management System*****" << endl << endl;
+        cout << "Login As" << endl;
+        cout << "1 : Customer " << endl;
+        cout << "2 : Staff" << endl;
+        cout << "3 : admin" << endl;
+        cout << "Or press \'-1\' for exit" << endl;
         cout << "Select your option : ";
         cin >> opt;
         switch (opt)
@@ -36,7 +59,7 @@ int main()
 
         case -1:
             /* code */
-            break;    
+            break;
 
         default:
             cout << "Invalid Option" << endl;
@@ -44,7 +67,7 @@ int main()
         }
     } while (opt != -1);
 
-    cout << "***** Thanks for Visit *****" << endl;       
+    cout << "***** Thanks for Visit *****" << endl;
 
     return 0;
 }
