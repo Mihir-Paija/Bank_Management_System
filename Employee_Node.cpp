@@ -2,22 +2,24 @@
 
 Employee ::Employee()
 {
-    left = nullptr;
-    right = nullptr;
     name = "";
     age = 0;
     emplooye_number = 0;
     password = 0;
+    
+    left = nullptr;
+    right = nullptr;
 }
 
 Employee ::Employee(string name, int age, int employeeno, int password)
 {
-    left = nullptr;
-    right = nullptr;
     this->name = name;
     this->age = age;
     this->emplooye_number = employeeno;
     this->password = password;
+    
+    left = nullptr;
+    right = nullptr;
 }
 
 bool Employee :: employee_password_verify()
@@ -25,7 +27,7 @@ bool Employee :: employee_password_verify()
     int password=0;
     for (int i = 1; i <= 3; i++)
     {
-        cout << "\nEnter password ("<<i<<"/3" <<" chance) or press -1 to go back to customer interface: ";
+        cout << "\nEnter password ("<<i<<"/3" <<" chance) : ";
         cin >> password;
         if (this->password == password)
         {

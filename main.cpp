@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 #include <bits/stdc++.h>
 #include <fstream>
 using namespace std;
@@ -22,12 +22,12 @@ Employee_BST Employees_DataBase;
 
 void boot(){
     Accounts_DataBase.load_accounts_server();
+    Employees_DataBase.load_employee_server();
 }
 
 
 int main()
 {
-    // cout << "hi" << endl;
     boot();
 
     int opt;
@@ -35,13 +35,13 @@ int main()
 
     do
     {
-        cout << "*****Welcome to Bank Management System*****" << endl << endl;
-        cout << "Login As" << endl;
+        cout << "\n***** Welcome to Bank Management System *****" << endl << endl;
+        cout << "\nLogin As" << endl;
         cout << "1 : Customer " << endl;
         cout << "2 : Staff" << endl;
         cout << "3 : admin" << endl;
         cout << "Or press \'-1\' for exit" << endl;
-        cout << "Select your option : ";
+        cout << "\nSelect your option : ";
         cin >> opt;
         switch (opt)
         {
@@ -62,12 +62,12 @@ int main()
             break;
 
         default:
-            cout << "Invalid Option" << endl;
+            cout << "\n!! Invalid Option !!" << endl;
             break;
         }
     } while (opt != -1);
 
-    cout << "***** Thanks for Visit *****" << endl;
+    cout << "\n***** Thanks for Visit *****" << endl;
 
     return 0;
 }

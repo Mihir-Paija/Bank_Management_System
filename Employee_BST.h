@@ -12,15 +12,21 @@ public:
 
     Employee_BST();
 
-    Employee* get_employee(void );
-    bool employee_password_verify(Employee* );
+    void Display_employees(Employee*);
     void load_employee_server();
     void update_employee_server(Employee *, int);
+
     Employee *search(int);
+    Employee* get_employee(void );
+    Employee* get_successor(Employee* );
+    void copy_data(Employee*,Employee*);
+
     void add_Employee(string, int, int);
-    void delete_Employee(int, int);
+    void Delete();
+    void delete_Employee(Employee*&,int);
+    void edit_profile(Employee* );
+
     void withdraw(int, Accounts_BST& );
     void deposit(int, Accounts_BST & );
-    void edit_profile(int, int);
     void transfer(int, Accounts_BST&);
 };

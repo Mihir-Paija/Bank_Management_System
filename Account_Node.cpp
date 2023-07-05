@@ -3,31 +3,31 @@
 
 Account :: Account()
 {
-	left = nullptr;
-	right = nullptr;
 	name = "";
-    // adress = "";
     account_number = 0;
     password = 0;
     balance = 0;
+	
+	left = nullptr;
+	right = nullptr;
 }
 
 Account :: Account(string name, int accountno, int password, int balance)
 {
-	left = nullptr;
-	right = nullptr;
 	this->name = name;
 	this->account_number = accountno;
-	// this->adress = adress;
 	this->balance = balance;
 	this->password = password;
+	
+	left = nullptr;
+	right = nullptr;
 }
 bool Account :: account_password_verify(void)
 {
 	int password=0;
     for (int i = 1; i <= 3; i++)
     {
-        cout << "\nEnter password ("<<i<<"/3" <<" chance) or press -1 to go back to customer interface: ";
+        cout << "\nEnter password ("<<i<<"/3" <<" chance) : ";
         cin >> password;
         if (this->password == password)
         {

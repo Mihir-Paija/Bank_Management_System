@@ -2,90 +2,132 @@ void admin()
 {
     int opt;
     cout << endl;
-    cout << "*****Welcome to Admin Interface*****" << endl
+    cout << "\n***** Welcome to Admin Interface *****" << endl
          << endl;
     int acc;
 
-    // check account number;
-    // print .. hello "mihir";
+    string password = "";
+    cout << "\nEnter Password : ";
+    cin >> password;
+    if (password != "nothing")
+        return;
 
     do
     {
-        cout << "Choose One of the following services" << endl;
-        cout << "1 : Create New Account" << endl;
-        cout << "2 : Delete Account" << endl;
-        cout << "3 : Edit Account Details" << endl;
-        cout << "4 : Create New Employee" << endl;
+        cout << "\nChoose One of the following services" << endl;
+        cout << "1 : Add new Bank Account" << endl;
+        cout << "2 : Delete Bank Account" << endl;
+        cout << "3 : Edit Bank Account Details" << endl;
+        cout << "4 : Add New Employee" << endl;
         cout << "5 : Delete Employee" << endl;
         cout << "6 : Edit Employee Details" << endl;
-        cout << "Or press \'-1\' for exit" << endl;
-        cout << "Select your option : ";
+        cout << "7 : Print Information of all Bank Accounts" << endl;
+        cout << "8 : Print Information of all Employees" << endl;
+        cout << "Or press \'-1\' to go back" << endl;
+        cout << "\nSelect your option : ";
         cin >> opt;
         switch (opt)
         {
         case 1:
         {
             string name;
-            cout << "Enter your Name : ";
+            cout << "\nEnter customer's Name : ";
             cin >> name;
+            if (stoi(name) == -1)
+                break;
+
             int password;
-            cout << "Enter your Password : ";
+            cout << "Enter customer's Password : ";
             cin >> password;
+            if (password == -1)
+                break;
+
             int balance;
             do
             {
-                cout << "Enter your Intial Balance (minimum 500) : ";
+                cout << "Enter Intial Balance for new account (minimum 500) : ";
                 cin >> balance;
-            } while (balance < 500);
-            Accounts_DataBase.add_Account(name,password,balance);
+            } while (balance < 500 && balance != -1);
+            if (balance == -1)
+                break;
+
+            Accounts_DataBase.add_Account(name, password, balance);
             break;
         }
 
         case 2:
-
+        {
+            Accounts_DataBase.Delete();
             break;
+        }
 
-        case 3:{
-            int accountno;
-            cout << "Enter your account number : ";
-            cin >> accountno;
-            int password;
-            cout << "Enter your Password : ";
-            cin >> password;
-            Accounts_DataBase.edit_account(accountno,password);
+        case 3:
+        {
+            Account* acc = Accounts_DataBase.get_account();
+            if(!acc)
+                break;
+            
+            if(acc->account_password_verify())
+                Accounts_DataBase.edit_account(acc);
+            
+            break;
         }
 
         case 4:
         {
             string name;
-            cout << "Enter your Name : ";
+            cout << "\nEnter employee's Name : ";
             cin >> name;
+            if (name == "-1")
+                break;
+
             int password;
-            cout << "Enter your Password : ";
+            cout << "Enter employee's Password : ";
             cin >> password;
+            if (password == -1)
+                break;
+
             int age;
             do
             {
-                cout << "Enter your Intial Balance (minimum 20) : ";
+                cout << "Enter employee's age (minimum 20) : ";
                 cin >> age;
-            } while (age < 20);
+            } while (age < 20 && age != -1);
+            if (age == -1)
+                break;
+
             Employees_DataBase.add_Employee(name, age, password);
             break;
         }
 
         case 5:
-
+        {
+            Employees_DataBase.Delete();
             break;
+        }
 
-        case 6:{
-            int employeeno;
-            cout << "Enter your employee number : ";
-            cin >> employeeno;
-            int password;
-            cout << "Enter your Password : ";
-            cin >> password;
-            /* re check............................*/
-            Accounts_DataBase.edit_account(employeeno,password);
+        case 6:
+        {
+            Employee* emp = Employees_DataBase.get_employee();
+            if (!emp)
+                break;
+
+            if(emp->employee_password_verify())
+                Employees_DataBase.edit_profile(emp);
+            
+            break;
+        }
+
+        case 7:
+        {
+            Accounts_DataBase.Display_Accounts(Accounts_DataBase.root);
+            break;
+        }
+
+        case 8:
+        {
+            Employees_DataBase.Display_employees(Employees_DataBase.root);
+            break;
         }
 
         case -1:
@@ -93,7 +135,7 @@ void admin()
             break;
 
         default:
-            cout << "Invalid Option" << endl;
+            cout << "\nInvalid Option" << endl;
             break;
         }
     } while (opt != -1);

@@ -4,13 +4,12 @@ using namespace std;
 class Account
 {
 public:
-	Account * left;
-	Account * right;
 	string name;
-	// string adress;
 	int account_number;
 	int password;
 	int balance;
+	Account * left;
+	Account * right;
 
 	Account();
 	Account(string, int, int, int);
